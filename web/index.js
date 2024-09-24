@@ -3,10 +3,22 @@ import { join } from "path";
 import { readFileSync } from "fs";
 import express from "express";
 import serveStatic from "serve-static";
+import dotenv from 'dotenv';
+dotenv.config();
 
 import shopify from "./shopify.js";
 import productCreator from "./product-creator.js";
 import PrivacyWebhookHandlers from "./privacy.js";
+import mongoose from "mongoose";
+import Timer from "./Models/Timer.js";
+
+mongoose.connect("mongodb+srv://mohammedshabil15:rYhyMCicvf8Xas9A@cluster0.0bxck.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
+.then(()=>{
+  console.log('Connected to MongoDB');
+})
+.catch((error)=>{
+  console.log('Error connecting to MongoDB:', error);
+});
 
 const PORT = parseInt(
   process.env.BACKEND_PORT || process.env.PORT || "3000",
@@ -25,7 +37,13 @@ app.get(shopify.config.auth.path, shopify.auth.begin());
 app.get(
   shopify.config.auth.callbackPath,
   shopify.auth.callback(),
-  shopify.redirectToShopifyOrAppRoot()
+  shopify.redirectToShopifyOrAppRoot(),async (req, res) => {
+    const session = res.locals.shopify.session;
+    const shop = session.shop; // Shopify store domain
+  
+    // You can use the shop domain here to save in your database
+    console.log('Shop domain:', shop);
+  }
 );
 app.post(
   shopify.config.webhooks.path,
@@ -38,6 +56,43 @@ app.post(
 app.use("/api/*", shopify.validateAuthenticatedSession());
 
 app.use(express.json());
+
+app.get('/api/shop', (req, res) => {
+  const session = res.locals.shopify.session;
+  const shop = session.shop; 
+  res.status(200).send({ shop });
+});
+
+app.post("/api/timers", async (req, res) => {
+  const { startDateTime, endDateTime, shop } = req.body; 
+
+  try {
+    const timer = new Timer({
+      startDateTime,
+      endDateTime,
+      shop, 
+    });
+
+    await timer.save();
+    res.status(201).send({ message: 'Timer created successfully!', timer });
+  } catch (error) {
+    console.error(`Failed to create timer: ${error.message}`);
+    res.status(500).send({ error: 'Failed to create timer' });
+  }
+});
+
+app.get("/api/timers", async (req, res) => {
+  try {
+    const shop = res.locals.shopify.session.shop; 
+    const timers = await Timer.find({ shop }); 
+
+    res.status(200).json(timers); 
+  } catch (error) {
+    console.error("Failed to fetch timers:", error);
+    res.status(500).json({ error: "Failed to fetch timers" });
+  }
+});
+
 
 app.get("/api/products/count", async (_req, res) => {
   const client = new shopify.api.clients.Graphql({
