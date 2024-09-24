@@ -1,0 +1,43 @@
+.timer-list {
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    margin: 0 auto; 
+  }
+  
+  h2 {
+    font-size: 24px;
+    margin-bottom: 16px;
+    color: #333; 
+  }
+  
+  .timer-list p {
+    font-size: 18px;
+    color: #666; 
+    text-align: center; 
+    margin: 20px 0; 
+  }
+  
+  .timer-list ul {
+    list-style-type: none; 
+    padding: 0; 
+  }
+  
+  .timer-list li {
+    background-color: #fff; 
+    padding: 15px;
+    border-radius: 6px;
+    margin: 10px 0; 
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  }
+  
+  .timer-list li div {
+    margin-bottom: 8px; 
+  }
+  
+  strong {
+    color: #333; 
+  }
+  
