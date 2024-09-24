@@ -3,7 +3,7 @@
 client_id = "a9c08e281141ff1eabb6d6ed30a76b19"
 name = "timer-app"
 handle = "timer-app-17"
-application_url = "https://population-stupid-dry-word.trycloudflare.com"
+application_url = "https://knitting-football-louisville-bye.trycloudflare.com"
 embedded = true
 
 [build]
@@ -17,9 +17,9 @@ scopes = "write_products"
 
 [auth]
 redirect_urls = [
-  "https://population-stupid-dry-word.trycloudflare.com/auth/callback",
-  "https://population-stupid-dry-word.trycloudflare.com/auth/shopify/callback",
-  "https://population-stupid-dry-word.trycloudflare.com/api/auth/callback"
+  "https://knitting-football-louisville-bye.trycloudflare.com/auth/callback",
+  "https://knitting-football-louisville-bye.trycloudflare.com/auth/shopify/callback",
+  "https://knitting-football-louisville-bye.trycloudflare.com/api/auth/callback"
 ]
 
 [webhooks]

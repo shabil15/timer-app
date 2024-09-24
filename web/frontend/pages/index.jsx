@@ -8,6 +8,7 @@ export default function HomePage() {
   return (
     <Page narrowWidth>
       <TitleBar title={"Countdown Timer App"} />
+      {/* <h1>Welcome to the Countdown Timer App.</h1> */}
       <TimerForm/>
     </Page>
   );
