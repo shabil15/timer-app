@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './TimerForm.css';
 
 function TimerForm() {
-  const [showForm, setShowForm] = useState(false);
+  
   const [startDate, setStartDate] = useState('');
   const [startTime, setStartTime] = useState('');
   const [endDate, setEndDate] = useState('');
@@ -56,7 +56,7 @@ function TimerForm() {
       if (response.ok) {
         const data = await response.json();
         alert(data.message);
-        setShowForm(false);
+        
       } else {
         throw new Error('Failed to save timer');
       }
@@ -68,9 +68,9 @@ function TimerForm() {
 
   return (
     <div className="timer-container">
-      <button className="add-button" onClick={() => setShowForm(true)}>+Add</button>
 
-      {showForm && (
+
+        <h2>Add Timer Form</h2>
         <div className="timer-form">
           <div className="input-row">
             <input
@@ -104,7 +104,6 @@ function TimerForm() {
 
           <button className="save-button" onClick={handleSubmit}>Save</button>
         </div>
-      )}
     </div>
   );
 }
