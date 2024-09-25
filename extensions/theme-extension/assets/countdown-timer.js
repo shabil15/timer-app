@@ -21,7 +21,7 @@
 
     fetchTimerData() {
       const shop = window.Shopify.shop;
-      fetch(`/timerData/timerinfo?shop=${shop}`)
+      fetch(`${location.origin}/apps/proxy?shop=${Shopify.shop}`)
         .then(response => {
           if (!response.ok) {
             throw new Error('Network response was not ok');

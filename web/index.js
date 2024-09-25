@@ -54,7 +54,7 @@ app.post(
 // also add a proxy rule for them in web/frontend/vite.config.js
 
 app.use("/api/*", shopify.validateAuthenticatedSession());
-app.use("/timerData/*",shopify.validateAuthenticatedSession());
+app.use("/timerData/*",authenticateTimer);
 
 async function authenticateTimer(req, res, next) {
   let shop = req.query.shop;
@@ -65,21 +65,16 @@ async function authenticateTimer(req, res, next) {
     res.send("Timer not authorised")
   }
   console.log('Shop domain:', shop);
-  next();
 }
 
 //
 app.get("/timerData/timerinfo", async (req, res) => {
   try {
-    const shop = req.query.shop; 
-    console.log(shop)
-    if (!shop) {
-      return res.status(400).json({ error: "Shop parameter is required" });
-    }
-
     const latestTimer = await Timer.findOne({ shop })
       .sort({ createdAt: -1 })
       .exec();
+
+    console.log(latestTimer);
 
     if (!latestTimer) {
       return res.status(404).json({ error: "No timer found for this shop" });
@@ -90,6 +85,8 @@ app.get("/timerData/timerinfo", async (req, res) => {
     console.error("Failed to fetch timer:", error);
     res.status(500).json({ error: "Failed to fetch timer" });
   }
+
+  // res.status(200).send('Data fetched')
 });
 
 app.use(express.json());
