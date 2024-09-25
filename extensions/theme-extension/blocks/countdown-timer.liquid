@@ -1,0 +1,56 @@
+{% schema %}
+{
+  "name": "Countdown Timer",
+  "target": "body",
+  "stylesheet": "countdown-timer.css",
+  "javascript": "countdown-timer.js",
+  "settings": [
+    {
+      "type": "text",
+      "id": "description",
+      "label": "Promotion Description",
+      "default": "Limited Time Offer!"
+    },
+    {
+      "type": "color",
+      "id": "color",
+      "label": "Timer Color",
+      "default": "#000000"
+    },
+    {
+      "type": "select",
+      "id": "size",
+      "label": "Timer Size",
+      "options": [
+        { "value": "12px", "label": "Small" },
+        { "value": "16px", "label": "Medium" },
+        { "value": "20px", "label": "Large" }
+      ],
+      "default": "16px"
+    },
+    {
+      "type": "select",
+      "id": "position",
+      "label": "Timer Position",
+      "options": [
+        { "value": "top", "label": "Top" },
+        { "value": "bottom", "label": "Bottom" }
+      ],
+      "default": "bottom"
+    }
+  ]
+}
+{% endschema %}
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/preact/10.5.15/preact.min.js"></script>
+<script>
+  window.countdownTimerSettings = {
+    description: {{ block.settings.description | json }},
+    displayOptions: {
+      color: {{ block.settings.color | json }},
+      size: {{ block.settings.size | json }},
+      position: {{ block.settings.position | json }}
+    }
+  };
+</script>
+{{ 'countdown-timer.js' | asset_url | script_tag }}
