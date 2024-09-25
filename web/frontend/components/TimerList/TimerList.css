@@ -41,3 +41,39 @@
     color: #333; 
   }
   
+  .delete-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+  }
+  
+  .delete-button:hover {
+    color: #bf0711; /* Darker red for hover effect */
+  }
+  
+  .delete-button .Polaris-Icon {
+    margin-left: 8px;
+  }
+  
+  .delete-button svg {
+    width: 20px;
+    height: 20px;
+    fill: #bf0711; /* Red color for delete icon */
+  }
+  
+  /* Loading and error states */
+  .loading, .error {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 18px;
+    color: #999;
+  }
+  
+  .no-timers {
+    text-align: center;
+    font-size: 16px;
+    color: #555;
+  }
