@@ -20,7 +20,7 @@ This Shopify app allows merchants to create, manage, and display countdown timer
 - **Frontend**: React (Admin Interface), Preact (Storefront Widget)
 - **Backend**: Node.js with Express
 - **Database**: MongoDB (stores timer data for different stores)
-- **Shopify Tools**: Shopify API, Shopify AppBridge, Polaris, Theme App Extension
+- **Shopify Tools**: Shopify API,Shopify cli 3.0, Polaris, Theme App Extension
 
 ---
 
@@ -37,8 +37,8 @@ This Shopify app allows merchants to create, manage, and display countdown timer
 1. **Clone the repository**:
 
    ```bash
-   git clone <your-repo-url>
-   cd <repo-folder>
+   git clone https://github.com/shabil15/timer-app.git countdown-timer
+   cd countdown-timer
    ```
 
 2. **Set up the environment variables**:  
@@ -52,18 +52,6 @@ This Shopify app allows merchants to create, manage, and display countdown timer
    npm install
    ```
 
-   Using yarn:
-
-   ```bash
-   yarn install
-   ```
-
-   Using pnpm:
-
-   ```bash
-   pnpm install
-   ```
-
 4. **Start the development server**:
 
    Using npm:
@@ -73,16 +61,6 @@ This Shopify app allows merchants to create, manage, and display countdown timer
    ```
 
    Using yarn:
-
-   ```bash
-   yarn dev
-   ```
-
-   Using pnpm:
-
-   ```bash
-   pnpm run dev
-   ```
 
 ---
 
@@ -123,18 +101,6 @@ To deploy the app, follow these steps:
    cd web/frontend && npm run build
    ```
 
-   Using yarn:
-
-   ```bash
-   cd web/frontend && yarn build
-   ```
-
-   Using pnpm:
-
-   ```bash
-   cd web/frontend && pnpm run build
-   ```
-
 2. **Deploy the app using Shopify CLI**. Refer to the [Shopify documentation](https://shopify.dev/docs/apps/tools/cli/commands) for deployment steps.
 
 ---
@@ -143,10 +109,6 @@ To deploy the app, follow these steps:
 
 - **Database**: The app uses MongoDB to store each store's timer data, ensuring that each store's product page shows the correct timers.
 - **Security**: Secure storage of timers using OAuth and MongoDB.
-- **Performance**: Ensure that the timers are loaded asynchronously via AJAX to minimize any potential delay in page load times.
+- **Performance**: Ensure that the timers are loaded asynchronously via fetch to minimize any potential delay in page load times.
 
 ---
-
-## License
-
-This project is licensed under the MIT License.
