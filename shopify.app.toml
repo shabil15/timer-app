@@ -3,7 +3,7 @@
 client_id = "a9c08e281141ff1eabb6d6ed30a76b19"
 name = "timer-app"
 handle = "timer-app-17"
-application_url = "https://adelaide-providers-destruction-panic.trycloudflare.com"
+application_url = "https://floral-missions-advertise-richard.trycloudflare.com"
 embedded = true
 
 [build]
@@ -17,9 +17,9 @@ scopes = "write_products"
 
 [auth]
 redirect_urls = [
-  "https://adelaide-providers-destruction-panic.trycloudflare.com/auth/callback",
-  "https://adelaide-providers-destruction-panic.trycloudflare.com/auth/shopify/callback",
-  "https://adelaide-providers-destruction-panic.trycloudflare.com/api/auth/callback"
+  "https://floral-missions-advertise-richard.trycloudflare.com/auth/callback",
+  "https://floral-missions-advertise-richard.trycloudflare.com/auth/shopify/callback",
+  "https://floral-missions-advertise-richard.trycloudflare.com/api/auth/callback"
 ]
 
 [webhooks]
