@@ -4,12 +4,11 @@ import { TitleBar } from "@shopify/app-bridge-react";
 import TimerForm from "../components/TimerForm/TimerForm";
 import TimerList from "../components/TimerList/TimerList";
 import { PlusIcon, ClockIcon } from '@shopify/polaris-icons';
-
 export default function HomePage() {
   const [selectedTab, setSelectedTab] = useState(0);
 
   const tabs = [
-    {
+    { 
       id: 'new-timer',
       content: (
         <span>
@@ -42,7 +41,7 @@ export default function HomePage() {
       />
       <div>
         {selectedTab === 0 && <TimerForm />}
-        {selectedTab === 1 && <TimerList />}
+        {selectedTab === 1 && <TimerList/>}
       </div>
     </Page>
   );
