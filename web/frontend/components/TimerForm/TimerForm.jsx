@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './TimerForm.css';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function TimerForm() {
   
@@ -22,7 +24,7 @@ function TimerForm() {
         }
       } catch (error) {
         console.error(error);
-        alert('Error fetching shop: ' + error.message);
+        toast.error('Error fetching shop: ' + error.message);
       }
     };
 
@@ -55,21 +57,20 @@ function TimerForm() {
 
       if (response.ok) {
         const data = await response.json();
-        alert(data.message);
+        toast.success(data.message);
         
       } else {
         throw new Error('Failed to save timer');
       }
     } catch (error) {
       console.error(error);
-      alert('Error saving timer: ' + error.message);
+      toast.error('Error saving timer: ' + error.message);
     }
   };
 
   return (
     <div className="timer-container">
-
-
+      <ToastContainer />
         <h2>Add Timer Form</h2>
         <div className="timer-form">
           <div className="input-row">

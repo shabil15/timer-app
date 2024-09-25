@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Icon } from '@shopify/polaris';
 import { DeleteIcon } from '@shopify/polaris-icons';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import './TimerList.css';
 
 function TimerList() {
@@ -85,8 +87,10 @@ function TimerList() {
       }
 
       setTimers((prevTimers) => prevTimers.filter((timer) => timer._id !== timerId));
+      toast.success('Timer deleted successfully');
     } catch (err) {
       setError(err.message);
+      toast.error('Failed to delete the timer');
     }
   };
 
@@ -100,6 +104,7 @@ function TimerList() {
 
   return (
     <div className="timer-list">
+      <ToastContainer/>
       <h2>Your Timers</h2>
       {timers.length === 0 ? (
         <div className="no-timers">
