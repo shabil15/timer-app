@@ -81,10 +81,29 @@ app.post("/api/timers", async (req, res) => {
   }
 });
 
+app.get("/api/timer", async (req, res) => {
+  try {
+    const shop = res.locals.shopify.session.shop;
+    
+    
+    const latestTimer = await Timer.findOne({ shop })
+      .sort({ createdAt: -1 }) 
+      .exec();
+    console.log(latestTimer);
+    res.status(200).json(latestTimer); 
+  } catch (error) {
+    console.error("Failed to fetch timers:", error);
+    res.status(500).json({ error: "Failed to fetch timers" });
+  }
+});
+
+
 app.get("/api/timers", async (req, res) => {
   try {
     const shop = res.locals.shopify.session.shop; 
-    const timers = await Timer.find({ shop }); 
+    const timers = await Timer.find({ shop })
+    .sort({ createdAt: -1 }) 
+      .exec(); 
 
     res.status(200).json(timers); 
   } catch (error) {
@@ -92,6 +111,18 @@ app.get("/api/timers", async (req, res) => {
     res.status(500).json({ error: "Failed to fetch timers" });
   }
 });
+
+app.delete("/api/timers/:id", async (req, res) => {
+  const { id } = req.params;
+  try {
+    await Timer.findByIdAndDelete(id);
+    res.status(200).send({ message: 'Timer deleted successfully' });
+  } catch (error) {
+    console.error(`Failed to delete timer: ${error.message}`);
+    res.status(500).send({ error: 'Failed to delete timer' });
+  }
+});
+
 
 
 app.get("/api/products/count", async (_req, res) => {
