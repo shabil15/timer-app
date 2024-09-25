@@ -3,7 +3,7 @@
 client_id = "a9c08e281141ff1eabb6d6ed30a76b19"
 name = "timer-app"
 handle = "timer-app-17"
-application_url = "https://washing-brokers-thank-digest.trycloudflare.com"
+application_url = "https://adelaide-providers-destruction-panic.trycloudflare.com"
 embedded = true
 
 [build]
@@ -17,9 +17,9 @@ scopes = "write_products"
 
 [auth]
 redirect_urls = [
-  "https://washing-brokers-thank-digest.trycloudflare.com/auth/callback",
-  "https://washing-brokers-thank-digest.trycloudflare.com/auth/shopify/callback",
-  "https://washing-brokers-thank-digest.trycloudflare.com/api/auth/callback"
+  "https://adelaide-providers-destruction-panic.trycloudflare.com/auth/callback",
+  "https://adelaide-providers-destruction-panic.trycloudflare.com/auth/shopify/callback",
+  "https://adelaide-providers-destruction-panic.trycloudflare.com/api/auth/callback"
 ]
 
 [webhooks]
